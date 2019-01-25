@@ -1,0 +1,3 @@
+class RemoteJobs::Scraper
+
+end
