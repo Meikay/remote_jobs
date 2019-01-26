@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["you@example.com"]
 
   spec.summary       = "remote jobs"
-  spec.description   = "remote jobs"
+  spec.description   = "A Gem that scrapes full stack remote jobs"
   spec.homepage      = "https://github.com/Meikay/remote_jobs"
   spec.license       = "MIT"
 
