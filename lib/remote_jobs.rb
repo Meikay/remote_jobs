@@ -1,5 +1,5 @@
 require 'nokogiri'
-#require 'open-url'
+require 'open-uri'
 require 'pry'
 
 require_relative './remote_jobs/version.rb'
