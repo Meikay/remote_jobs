@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/remote_jobs"
+require "bundler/setup"
+require "remote_jobs"
+
+#require_relative "../lib/remote_jobs" 
+
 
 RemoteJobs::CLI.new.start
