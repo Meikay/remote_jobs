@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     remote_jobs (0.1.0)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -21,7 +22,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  nokogiri
   pry
   rake (~> 10.0)
   remote_jobs!
