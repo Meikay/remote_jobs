@@ -11,7 +11,7 @@ class RemoteJobs::CLI
     def jobs_list
       #get jobs(scrape)
       puts "Here are a list of jobs:"
-      @jobs = RemoteJobs::Jobs.today
+      @jobs = RemoteJobs::Scraper.scrape_jobs
       @jobs.each.with_index(1) do |job, i|
         puts "#{i}. #{job.name} - #{job.company} - #{job.language}"
       end
