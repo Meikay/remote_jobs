@@ -13,7 +13,7 @@ class RemoteJobs::CLI
       puts "Here are a list of jobs:"
       @jobs = RemoteJobs::Scraper.scrape_jobs
       @jobs.each.with_index(1) do |job, i|
-        puts "#{i}. #{job.name} - #{job.company} - #{job.language}"
+         puts "#{i}. #{job.name}" #- #{job.company} - #{job.language}
       end
     end
 
@@ -26,7 +26,7 @@ class RemoteJobs::CLI
 
         if input.to_i > 0
             puts @jobs[input.to_i - 1]
-            puts "#{i}. #{job.name} - #{job.company} - #{job.language}"
+            puts "#{i}. #{job.name}"
         elsif input == "list"
             puts jobs_list 
         else

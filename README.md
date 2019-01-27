@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Type in a number of the job you would like more information on in the CLI.
 
 ## Development
 
