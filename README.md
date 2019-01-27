@@ -1,6 +1,6 @@
 # RemoteJobs
 
-Welcome to your my gem! This is a gem that scrapes a remote job website and returns a list of full stack remote jobs and their descriptions.
+Welcome to my gem! This project scrapes a remote job website called remoteok.io and returns a list of full stack remote jobs and their descriptions.
 
 ## Installation
 
