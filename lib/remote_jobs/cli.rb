@@ -33,20 +33,21 @@ class RemoteJobs::CLI
         case input
         when "full stack"
           puts "full stack"
-          scrape_full_stack
-          list_categories
-          choose_category
-        #   url = "https://remoteok.io/remote-full-stack-jobs"
-        #   RemoteJobs::Scraper.scrape_jobs(url) #list of full stack jobs scrape the full stack page
-    when "front end"
-        puts "front end"
-     when "rails"
-        puts "rails"
-     when "exit"
-        puts "Goodbye"
-     else
-       puts "Sorry! I didn't understand that input please enter a number or exit"
-       greet_user 
+        #   scrape_full_stack
+        #   list_categories
+        #   choose_category
+           url = "https://remoteok.io/remote-full-stack-jobs"
+           jobs = RemoteJobs::Scraper.scrape_jobs(url) #list of full stack jobs scrape the full stack page
+           puts jobs[1] 
+        when "front end"
+          puts "front end"
+        when "rails"
+          puts "rails"
+        when "exit"
+          puts "Goodbye"
+        else
+          puts "Sorry! I didn't understand that input please enter a number or exit"
+          greet_user 
         end
     end
 end

@@ -1,34 +1,35 @@
+require 'pry'
 class RemoteJobs::Scraper
     attr_accessor :name, :company, :language, :url
 
-  def self.scrape_jobs
+  def self.scrape_jobs(url)
     # Scrape remote_jobs and return list based on that data
-    webpage = Nokogiri::HTML(open("https://remoteok.io/"))
-     array_of_jobs = webpage.css("td.company.position.company_and_position")
+    webpage = Nokogiri::HTML(open(url))
+      section = webpage.css("td.company.position.company_and_position")
     
-     array_of_jobs.map do |job|
-         webpage = job.css("a.preventLink h2").text
-         url = job.css("a.preventLink")[0]['href']
-         puts url
-     end
+      section.map do |job|
+          webpage = job.css("a.preventLink h2").text
+          url = job.css("a.preventLink")[0]['href']
+          puts url
+      end
   end
 
-   def scrape_jobs 
-     jobs = []
+  #  def scrape_jobs 
+  #    jobs = []
 
-     jobs << self.scrape_remoteok
+  #    jobs << self.scrape_remoteok
 
-    #Go to remoteok, find the jobs
-    #extract the properties
-    #instantiate a job
+  #   #Go to remoteok, find the jobs
+  #   #extract the properties
+  #   #instantiate a job
     
-    jobs
-  end
+  #   jobs
+  # end
 
-   def scrape_remoteok
-     doc = Nokogiri::HTML(open("https://remoteok.io/remote-full-stack-jobs")) 
-     name = doc.search("td.company.position.company_and_position h2").text
-   end
+#    def scrape_remoteok
+#      doc = Nokogiri::HTML(open("https://remoteok.io/remote-full-stack-jobs")) 
+#      name = doc.search("td.company.position.company_and_position h2").text
+#    end
 
-end
+ end
 
