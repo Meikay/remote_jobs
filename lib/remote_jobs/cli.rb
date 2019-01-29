@@ -21,7 +21,8 @@ class RemoteJobs::CLI
     def greet_user 
         input = nil
         while input != 'exit'
-        puts "Welcome to Remote Jobs"    
+        puts "Welcome to Remote Jobs"
+        puts "Type in the type of job you are looking for"    
         puts "Enter the number that you would like more information on" 
         puts "Or type list to see the list of jobs again! To exit, type exit:"
         input = gets.strip.downcase
@@ -34,11 +35,11 @@ class RemoteJobs::CLI
         when "full stack"
           puts "full stack"
         #   scrape_full_stack
-        #   list_categories
-        #   choose_category
-           url = "https://remoteok.io/remote-full-stack-jobs"
-           jobs = RemoteJobs::Scraper.scrape_jobs(url) #list of full stack jobs scrape the full stack page
-           puts jobs[1] 
+        #   list_numbered_jobs
+        #   choose_number
+        #    url = "https://remoteok.io/remote-full-stack-jobs"
+        #    jobs = RemoteJobs::Scraper.scrape_jobs(url) #list of full stack jobs scrape the full stack page
+           
         when "front end"
           puts "front end"
         when "rails"
