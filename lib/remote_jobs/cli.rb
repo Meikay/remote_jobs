@@ -6,7 +6,7 @@ require 'pry'
      def start
        greet_user
        RemoteJobs::Scraper.full_stack_jobs
-       print_jobs
+        print_jobs
        good_bye
     end
 
@@ -19,9 +19,13 @@ require 'pry'
         input = gets.strip.downcase
 
         if input == "full stack"
+          url = "https://remoteok.io/remote-full-stack-jobs"
           RemoteJobs::Scraper.full_stack_jobs  #puts a numbered list of full stack jobs 
-          print_jobs
-          binding.pry
+            RemoteJobs::Details.all.each do |job, i|
+            puts "#{i}. #{job.name}"
+          end
+
+         
         #elsif input.to_i > 0 
             #puts out the details about the job the user chose
         elsif input == "exit"
@@ -37,8 +41,8 @@ require 'pry'
       puts ""
       puts "---------- Full Stack Jobs ----------"
       puts ""
-      RemoteJobs::Details.all.each.with_index(1) do |job, index| #use a range
-        puts "#{index}. #{job.name} - #{job.company} - #{job.language} - #{job.url}"
+      RemoteJobs::Details.each.with_index(1) do |job, index| #use a range
+        puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
        
       end
     end
