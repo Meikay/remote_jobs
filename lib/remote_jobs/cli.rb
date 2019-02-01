@@ -19,11 +19,12 @@ require 'pry'
         input = gets.strip.downcase
 
         if input == "full stack"
-          url = "https://remoteok.io/remote-full-stack-jobs"
-          RemoteJobs::Scraper.full_stack_jobs  #puts a numbered list of full stack jobs 
-            RemoteJobs::Details.all.each.with_index do |job, i|
-            puts "#{i}. #{job.name}"
-          end
+          print_jobs
+          # url = "https://remoteok.io/remote-full-stack-jobs"
+          # RemoteJobs::Scraper.full_stack_jobs  #puts a numbered list of full stack jobs 
+          #   RemoteJobs::Details.all.each.with_index do |job, i|
+          #   puts "#{i}. #{job.name}"
+          # end
 
          
         #elsif input.to_i > 0 
@@ -41,9 +42,10 @@ require 'pry'
       puts ""
       puts "---------- Full Stack Jobs ----------"
       puts ""
-      RemoteJobs::Details.each.with_index(1) do |job, index| #use a range
-        puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
-       
+      RemoteJobs::Scraper.full_stack_jobs
+        RemoteJobs::Details.all.each.with_index(1) do |job, index| #use a range
+          puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
+        
       end
     end
  
