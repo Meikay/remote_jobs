@@ -21,7 +21,7 @@ require 'pry'
         if input == "full stack"
           url = "https://remoteok.io/remote-full-stack-jobs"
           RemoteJobs::Scraper.full_stack_jobs  #puts a numbered list of full stack jobs 
-            RemoteJobs::Details.all.each do |job, i|
+            RemoteJobs::Details.all.each.with_index do |job, i|
             puts "#{i}. #{job.name}"
           end
 
