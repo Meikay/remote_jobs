@@ -13,27 +13,20 @@ require 'pry'
     def greet_user 
         input = nil
         while input != 'exit'
-        puts "Welcome to Full Stack Remote Jobs"    
-        puts "Enter the number of the job you would like more information on" 
-        puts "Or type list to see the list of Full Stack Remote Jobs again! To exit, type exit:"
+        puts "Welcome to Full Stack Remote Jobs"  
+        puts "Please type 'full stack' to see a list of full stack jobs"  
         input = gets.strip.downcase
 
         if input == "full stack"
           print_jobs
-          # url = "https://remoteok.io/remote-full-stack-jobs"
-          # RemoteJobs::Scraper.full_stack_jobs  #puts a numbered list of full stack jobs 
-          #   RemoteJobs::Details.all.each.with_index do |job, i|
-          #   puts "#{i}. #{job.name}"
-          # end
-
-         
-        #elsif input.to_i > 0 
+        elsif input.to_i > 0 
+          choose_num
             #puts out the details about the job the user chose
         elsif input == "exit"
           good_bye
         else
           puts "Sorry! I didn't understand that input please enter a number or exit"
-          greet_user 
+          
         end
       end
     end
@@ -43,28 +36,35 @@ require 'pry'
       puts "---------- Full Stack Jobs ----------"
       puts ""
       RemoteJobs::Scraper.full_stack_jobs
-        RemoteJobs::Details.all.each.with_index(1) do |job, index| #use a range
+        RemoteJobs::Jobs.all.each.with_index(1) do |job, index| #use a range
           puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
-        
       end
+    end
+
+    def choose_num
+      puts "\nchoose a number to learn more about a job's description:"
+        input = gets.strip.to_i
+        max_val = RemoteJobs::Jobs.all.length
+        if input.between?(1,max_val)
+          description = RemoteJobs::Jobs.all[input-1]
+          display_description(description)
+        else
+          puts "\nSorry! I didn't understand that input please enter a number or exit"
+          print_jobs   #recursion
+          choose_num
+        end
+    end
+
+    def display_description(description)
+
     end
  
 
-     def good_bye
-       puts "Thank you for checking our list of jobs!"
-     end
+    def good_bye
+      puts "Thank you for checking our list of jobs!"
+    end
  end
 
 
  
-
-
-    # def jobs_list
-    #   #get jobs(scrape)
-    #   puts "Here are a list of jobs:"
-    #   @jobs = RemoteJobs::Scraper.scrape_jobs
-    #   @jobs.each.with_index(1) do |job, i|
-    #      puts "#{i}. #{job.name}" #- #{job.company} - #{job.language}
-    #   end
-    # end
 

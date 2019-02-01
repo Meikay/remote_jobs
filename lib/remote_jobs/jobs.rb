@@ -1,4 +1,4 @@
-class RemoteJobs::Details
+class RemoteJobs::Jobs
      attr_accessor :name, :url, :description, :company, :language
      attr_reader :description
        @@all = []
