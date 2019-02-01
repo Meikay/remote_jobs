@@ -3,6 +3,7 @@ class RemoteJobs::Jobs
      attr_reader :description
        @@all = []
 
+
        def initialize(name = nil, url = nil)
          @name = name
          @url =  "https://remoteok.io" + url.to_s 

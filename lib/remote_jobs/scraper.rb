@@ -5,13 +5,13 @@ class RemoteJobs::Scraper
     def self.full_stack_jobs
       doc = Nokogiri::HTML(open("https://remoteok.io/remote-full-stack-jobs"))
         job_listings = doc.css("td.company.position.company_and_position") #td.company.position.company_and_position
-          job_listings.each do |job_listing|
+          job_listings[1...101].each do |job_listing|
             job = RemoteJobs::Jobs.new
             job.name= job_listing.css('a.preventLink h2').text
             job.company= job_listing.css('a.companyLink h3').text
             #job.language= job_listing.css('a.no-border.tooltip h3').text   #do it in the second level use #split
             job.url= "https://remoteok.io" + job_listing.css('a')[0].attributes["href"].value
-            
+      
           end
     end
 
@@ -36,6 +36,17 @@ class RemoteJobs::Scraper
 
 
 end
+
+# job = RemoteJobs::Jobs.new
+#             job.name= job_listing.css('a.preventLink h2').text
+#             job.company= job_listing.css('a.companyLink h3').text
+#             #job.language= job_listing.css('a.no-border.tooltip h3').text   #do it in the second level use #split
+#             job.url= "https://remoteok.io" + job_listing.css('a')[0].attributes["href"].value
+            
+
+
+
+
   # def self.full_stack_jobs  
   #   listing = []
   #    doc = Nokogiri::HTML(open("https://remoteok.io/remote-full-stack-jobs"))
