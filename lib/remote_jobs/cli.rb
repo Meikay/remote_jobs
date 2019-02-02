@@ -23,14 +23,12 @@ require 'pry'
 
         if input == "full stack"
           print_jobs
-        elsif input.to_i > 0 
-          choose_num
-            #puts out the details about the job the user chose
+        # elsif input.to_i.between?(1, 100)
+          choose_num #puts out the description about the job the user chose
         elsif input == "exit"
           good_bye
         else
           puts "Sorry! I didn't understand that input please enter a number or exit"
-          
         end
       end
     end
@@ -46,25 +44,29 @@ require 'pry'
     end
 
     def choose_num
-      puts "\nchoose a number to learn more about a job's description:"
-        input = gets.strip.to_i
-        max_val = RemoteJobs::Jobs.all.length
-        if input.between?(1,max_val)
-          description = RemoteJobs::Jobs.all[input-1]
-          display_description(description)
-        else
-          puts "\nSorry! I didn't understand that input please enter a number or exit"
-          #print_jobs   #recursion
-          choose_num
-        end
+      puts "\nchoose a number from 1-100 to learn more about a job's description:"
+        input = gets.strip
+        # max_val = RemoteJobs::Jobs.all.length
+        # until input == "exit"
+          if input.to_i.between?(1,100)
+            # find particular job description
+            # 2nd level scrape
+            # list job and description
+            # description = RemoteJobs::Jobs.all[input-1]
+            # display_description(description)
+          else
+            puts "\nSorry! I didn't understand that input please enter a number or exit"
+            choose_num  #recursion
+          end
     end
 
     def scrape_description
-
+      url = "https://remoteok.io/remote-full-stack-jobs"
+      description = RemoteJobs::Scraper.scrape_link(url)
     end
 
     def display_description(description)
-
+      
     end
 
     def alt_menu

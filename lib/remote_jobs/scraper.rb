@@ -14,13 +14,16 @@ class RemoteJobs::Scraper
       
           end
     end
+          #iterate (td.heading div.expandContents div.description
 
-    def self.scrape_link(description) #job
-      webpage = Nokogiri::HTML(open(description.url))
-      jobs = webpage.css("td.company.position.company_and_position a.preventLink h2")
-      jobs.each do |job_deets|
-        description.jobs << job_deets.text
-       
+    def self.scrape_link(job_object) #job
+      description_page = Nokogiri::HTML(open(job_object.url))
+      description = description_page.css("div.expandContents") #array of job descriptions
+
+        description.each do |description_html|
+          description_object = RemoteJobs::Description.new
+          description_object.about = description_html.css("div.description").text
+          job_object.description << description_object
       end
     end
 
