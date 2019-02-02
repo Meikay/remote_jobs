@@ -1,13 +1,11 @@
+# model that makes job objects
 class RemoteJobs::Jobs
      attr_accessor :name, :url, :description, :company
-     attr_reader :description
        @@all = []
-
 
        def initialize(name = nil, url = nil)
          @name = name
          @url =  "https://remoteok.io" + url.to_s 
-         @items = []
          @@all << self #saving or remembering the object 
        end
         

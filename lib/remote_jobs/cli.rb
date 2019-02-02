@@ -5,9 +5,8 @@ require 'pry'
 
      def start
       greet_user
-      menu
       RemoteJobs::Scraper.full_stack_jobs
-      print_jobs
+      menu
       good_bye
     end
 
@@ -37,7 +36,6 @@ require 'pry'
       puts ""
       puts "---------- Top 100 Full Stack Jobs ----------"
       puts ""
-      RemoteJobs::Scraper.full_stack_jobs
         RemoteJobs::Jobs.all.each.with_index(1) do |job, index| #use a range
           puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
       end
@@ -46,31 +44,56 @@ require 'pry'
     def choose_num
       puts "\nchoose a number from 1-100 to learn more about a job's description:"
         input = gets.strip
-        # max_val = RemoteJobs::Jobs.all.length
-        # until input == "exit"
-          if input.to_i.between?(1,100)
-            # find particular job description
+        index = input.to_i - 1
+        until input.to_i.between?(1,100) || input == "exit"
+          puts "Sorry! I didn't understand that, please enter a number or exit!"
+          input = gets.strip
+        end
+        # only do 53 if the job I picked doesnt have a description
+        # check job_object
+        # Dont rescrape!
+        # fix the logic!
+        # think of jobs as a database
+        RemoteJobs::Scraper.scrape_link(RemoteJobs::Jobs.all[index])
+        # get the right object for the num
+        # it knows the name and url
+        # use object's url 
+        # if input != "exit"
+        #   index =  input.to_i - 1
+        #   menu
+        # end
+    end
+
+     # find particular job description
             # 2nd level scrape
             # list job and description
             # description = RemoteJobs::Jobs.all[input-1]
             # display_description(description)
-          else
-            puts "\nSorry! I didn't understand that input please enter a number or exit"
-            choose_num  #recursion
-          end
-    end
 
-    def scrape_description
-      url = "https://remoteok.io/remote-full-stack-jobs"
-      description = RemoteJobs::Scraper.scrape_link(url)
-    end
+    # def scrape_description
+    #   url = "https://remoteok.io/remote-full-stack-jobs"
+    #   description = RemoteJobs::Scraper.scrape_link(url)
+    # end
 
-    def display_description(description)
+    # def display_description(description)
       
-    end
+    # end
 
     def alt_menu
-
+      puts "Would you like to see another job description? Type 'D' "
+      puts "Would you like to exit? Type 'E' "
+      input = gets.strip.downcase
+      if input == "D"
+        print_jobs
+        choose_num
+        scrape_description
+        display_description
+      elsif input == "E"
+        good_bye
+      else
+        puts "Sorry! I didn't understand that, please enter a number or exit."
+        alt_menu  #recursion
+      end
     end
 
     def good_bye

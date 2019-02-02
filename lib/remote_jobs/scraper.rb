@@ -18,26 +18,19 @@ class RemoteJobs::Scraper
 
     def self.scrape_link(job_object) #job
       description_page = Nokogiri::HTML(open(job_object.url))
-      description = description_page.css("div.expandContents") #array of job descriptions
+      # description = description_page.css("td.heading div.expandContents") #array of job descriptions
+        # assuming description is correct, 
+         job_object.description = description_page.css("div.description").text
+         binding.pry
+        
 
-        description.each do |description_html|
-          description_object = RemoteJobs::Description.new
-          description_object.about = description_html.css("div.description").text
-          job_object.description << description_object
-      end
+        # description.each do |description_html|
+          
+          # description_object = RemoteJobs::Description.new
+          # description_object.about = description_html.css("div.description").text
+          # job_object.description << description_object
+      # end
     end
-
-
-
-
-
-
-
-
-
-
-
-
 end
 
 # job = RemoteJobs::Jobs.new
