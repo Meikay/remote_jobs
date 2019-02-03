@@ -1,9 +1,7 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby   shebang telling my terminal what these files are and what interpreter to use
 
 require "bundler/setup"
-require "remote_jobs"
-
-#require_relative "../lib/remote_jobs" 
+require "remote_jobs" 
 
 
 RemoteJobs::CLI.new.start
