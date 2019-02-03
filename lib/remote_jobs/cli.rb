@@ -13,7 +13,7 @@
     end
 
     def greet_user
-      puts "Welcome to our top 100 Full Stack Remote Jobs"
+      puts "Welcome to our top 100 Full Stack Remote Jobs from Remoteok.io"
       puts "Would you like to see our our list?"
       puts "If so, please type 'Yes'!"
     end
