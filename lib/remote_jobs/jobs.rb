@@ -14,5 +14,4 @@ class RemoteJobs::Jobs
        def self.all 
          @@all 
        end
-      
 end

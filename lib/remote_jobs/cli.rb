@@ -26,9 +26,6 @@
         case input
         when "yes"  
           menu_helper
-          #  display_jobs
-          #  choose_num #puts out the description about the job the user chose
-          #  alt_menu
         when "exit"
           good_bye
         else
@@ -57,7 +54,7 @@
         index = input.to_i - 1
         description = RemoteJobs::Scraper.add_description(RemoteJobs::Jobs.all[index]) #only do this if the job I picked does not have a description
         clean_description = description.gsub("{linebreak}", "\n")
-        puts "#{clean_description}" #how to make it look pretty
+        puts "#{clean_description}" 
     end 
 
     def alt_menu
@@ -69,9 +66,6 @@
       case input
       when "d"
         menu_helper
-        # display_jobs
-        # choose_num
-        # alt_menu
       when "e"
         good_bye
       else
@@ -95,11 +89,4 @@
 
 
  
-        # check job_object
-        # Dont rescrape!
-        # fix the logic!
-        # think of jobs as a database
         
-        # get the right object for the num
-        # it knows the name and url
-        # use object's url
