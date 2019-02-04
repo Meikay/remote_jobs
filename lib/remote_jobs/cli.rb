@@ -13,9 +13,9 @@
     end
 
     def greet_user
-      puts "Welcome to our top 100 Full Stack Remote Jobs from Remoteok.io"
-      puts "Would you like to see our our list?"
-      puts "If so, please type 'Yes'!"
+      puts "Welcome to our top 100 Full Stack Remote Jobs from Remoteok.io".colorize(:yellow)
+      puts "Would you like to see our our list?".colorize(:yellow)
+      puts "If so, please type 'Yes'!".colorize(:yellow)
     end
 
     def menu
@@ -29,7 +29,7 @@
         when "exit"
           good_bye
         else
-          puts "Sorry! I didn't understand that input please enter a number or exit"
+          puts "Sorry! I didn't understand that input please enter a number or exit".colorize(:yellow)
           menu
         end
       end
@@ -37,29 +37,29 @@
 
     def display_jobs
       puts ""
-      puts "---------- Top 100 Full Stack Jobs ----------"
+      puts "---------- Top 100 Full Stack Jobs ----------".colorize(:yellow)
       puts ""
         RemoteJobs::Jobs.all.each.with_index(1) do |job, index| #use a range
-          puts "#{index}. #{job.name} - #{job.company} - #{job.url}"
+          puts "#{index}. #{job.name} - #{job.company} - #{job.url}".colorize(:red)
       end
     end
 
     def choose_num
-      puts "\nIf you would like to know more information about a job, choose a number from 1-100:"
+      puts "\nIf you would like to know more information about a job, choose a number from 1-100:".colorize(:yellow)
         input = gets.strip
         until input.to_i.between?(1,100) || input == "exit"
-          puts "Sorry! I didn't understand that, please enter a number or exit!"
+          puts "Sorry! I didn't understand that, please enter a number or exit!".colorize(:yellow)
           input = gets.strip
         end
         index = input.to_i - 1
         description = RemoteJobs::Scraper.add_description(RemoteJobs::Jobs.all[index]) #only do this if the job I picked does not have a description
         clean_description = description.gsub("{linebreak}", "\n")
-        puts "#{clean_description}" 
+        puts "#{clean_description}".colorize(:blue) 
     end 
 
     def alt_menu
-      puts "Would you like to see another job description? Type 'D' "
-      puts "Would you like to exit? Type 'E' "
+      puts "Would you like to see another job description? Type 'D' ".colorize(:yellow)
+      puts "Would you like to exit? Type 'E' ".colorize(:yellow)
       input = nil
       while input != 'exit'    
       input = gets.strip.downcase
@@ -69,7 +69,7 @@
       when "e"
         good_bye
       else
-        puts "Sorry! I didn't understand that, please enter a number or exit."
+        puts "Sorry! I didn't understand that, please enter a number or exit.".colorize(:yellow)
         alt_menu  #recursion
       end
       end
@@ -82,7 +82,7 @@
     end
 
     def good_bye
-      puts "Thank you for checking our list of full stack jobs!"
+      puts "Thank you for checking our list of full stack jobs!".colorize(:yellow)
       exit!
     end
  end
