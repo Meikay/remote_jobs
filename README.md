@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-1. Type in a number of the job you would like more information on in the CLI.
+1. Type 'yes' to see a list of the top 100 jobs from remoteok.io
+2. Type in the number of the job you would like more information on in the CLI.
+
 
 ## Development
 
