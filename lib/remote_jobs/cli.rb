@@ -13,8 +13,8 @@
     end
 
     def greet_user
-      puts "Welcome to our top 100 Full Stack Remote Jobs from Remoteok.io".colorize(:yellow)
-      puts "Would you like to see our our list?".colorize(:yellow)
+      puts "Welcome To Our Top 100 Full Stack Remote Jobs From Remoteok.io".colorize(:yellow)
+      puts "Would you like to see our list?".colorize(:yellow)
       puts "If so, please type 'Yes'!".colorize(:yellow)
     end
 
