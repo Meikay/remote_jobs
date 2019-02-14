@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby   shebang telling my terminal what these files are and what interpreter to use
+#!/usr/bin/env ruby   
 
 require "bundler/setup"
 require "remote_jobs" 
