@@ -22,7 +22,6 @@ class RemoteJobs::CLI
       input = nil
       while input != 'exit'    
       input = gets.strip.downcase
-      
       case input
       when "yes"  
         menu_helper
@@ -54,7 +53,7 @@ class RemoteJobs::CLI
       index = input.to_i - 1
       jobs = RemoteJobs::Jobs.all
       if jobs[index].description == nil  #if job object does not have a description
-      RemoteJobs::Scraper.add_description(RemoteJobs::Jobs.all[index]) #only do this if the job I picked does not have a description
+        RemoteJobs::Scraper.add_description(RemoteJobs::Jobs.all[index]) #only do this if the job I picked does not have a description
       end
       clean_description = jobs[index].description.gsub("{linebreak}", "\n")
       puts "#{clean_description}".colorize(:blue) 
