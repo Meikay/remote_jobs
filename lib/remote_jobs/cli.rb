@@ -2,6 +2,7 @@
 #CLI Controller
 
 class RemoteJobs::CLI
+  attr_accessor :sorted_jobs
 
   def start
     greet_user
@@ -39,7 +40,8 @@ class RemoteJobs::CLI
     puts ""
     puts "---------- Top 100 Full Stack Jobs ----------".colorize(:yellow)
     puts ""
-    RemoteJobs::Jobs.all.each.with_index(1) do |job, index| #use a range
+    @sorted_jobs.each.with_index(1) do |job,index|
+    #RemoteJobs::Jobs.all.each.with_index(1) do |job, index| #use a range
       puts "#{index}. #{job.name} - #{job.company} - #{job.url}".colorize(:red)
     end
   end
@@ -47,7 +49,7 @@ class RemoteJobs::CLI
   def choose_num
     puts "\nIf you would like to know more information about a job, choose a number from 1-100:".colorize(:yellow)
     input = gets.strip
-    until input.to_i.between?(1,RemoteJobs::Jobs.all.length)  #it scrapes when it should exit!
+    until input.to_i.between?(1,RemoteJobs::Jobs.all.length)  
       if input == "e" || input == "exit" 
         good_bye
       else  
@@ -94,7 +96,13 @@ class RemoteJobs::CLI
     puts "Thank you for checking our list of full stack jobs!".colorize(:yellow)
     exit!
   end
+
+  def sort_jobs_abc
+    @sorted_jobs = RemoteJobs::Jobs.all.sort_by!{|job| job.name.downcase}
+  end
 end
+
+
 
 
 
