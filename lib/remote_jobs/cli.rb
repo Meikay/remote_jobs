@@ -7,6 +7,7 @@ class RemoteJobs::CLI
   def start
     greet_user
     RemoteJobs::Scraper.full_stack_jobs
+    sort_jobs_abc
     menu
     choose_num
     alt_menu
